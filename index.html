@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="fuselabx — Empowering the next generation of makers and engineers through hands-on Arduino and electronics education."/>
+  <title>FUSELABX | Electronics Education Initiative</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind (utility helpers — preflight disabled so it won't blank the page) -->
+  <script>
+    window.tailwind = window.tailwind || {};
+  </script>
+  <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+  <script>
+    if(window.tailwind && window.tailwind.config){
+      tailwind.config = { corePlugins: { preflight: false } };
+    }
+  </script>
+
+  <!-- Custom CSS — always loaded last -->
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ========================================
+     NAVBAR
+     ======================================== -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap nav-i">
+    <a href="#hero" class="logo" aria-label="FUSELABX home">
+      <span class="bolt">⚡</span>
+      <span><span class="FUSE">FUSE</span><span class="LABX">LABBX</span></span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-r">
+      <!-- href set by links.js via data-vb -->
+      <a href="#" data-vb="github"    target="_blank" rel="noopener" class="ibtn" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84a9.6 9.6 0 012.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg>
+      </a>
+      <a href="#" data-vb="whatsapp"  target="_blank" rel="noopener" class="ibtn" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.16c-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.43z"/></svg>
+      </a>
+    </div>
+
+    <button class="ham" id="ham" aria-label="Toggle menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div id="drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+  <ul>
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="d-soc">
+    <a href="#" data-vb="github"   target="_blank" rel="noopener" class="ibtn" aria-label="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84a9.6 9.6 0 012.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg>
+    </a>
+    <a href="#" data-vb="whatsapp" target="_blank" rel="noopener" class="ibtn" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.16c-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.43z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ========================================
+     HERO
+     ======================================== -->
+<section id="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hc fu">
+      <div class="h-logo">
+        <img src="images/logo.jpeg" alt="VoltBloom Logo" style="width:78px;height:78px;border-radius:18px;object-fit:contain;"/>
+        <div class="h-wm">
+          <span class="fuse">fuse</span>
+          <span class="labx">labx</span>
+        </div>
+      </div>
+      <!-- UPDATE: tagline & description -->
+      <p class="h-tag">Electronics Education Initiative</p>
+      <p class="h-desc">Empowering the next generation of makers, engineers, and innovators through hands-on Arduino and electronics education. <strong>Learn. Build. Innovate.</strong></p>
+      <div class="h-ctas">
+        <a href="#courses" class="btn btn-y">🚀 Explore Courses</a>
+        <a href="#events"  class="btn btn-o">📋 Upcoming Events</a>
+      </div>
+      <!-- UPDATE: set data-end to your real numbers -->
+      <div class="h-stats">
+       
+        <div class="stat"><div class="sn" data-end="12"  data-plus="">12</div><div class="sl">Courses Offered</div></div>
+        <div class="stat"><div class="sn" data-end="30"  data-plus="+">30+</div><div class="sl">Projects Completed</div></div>
+        <div class="stat"><div class="sn" data-end="8"   data-plus="">8</div><div class="sl">Events Hosted</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     MISSION & FOUNDING STORY
+     UPDATE: values text, timeline milestones
+     ======================================== -->
+<section id="mission" class="sec sec-alt">
+  <div class="wrap">
+    <div class="m-grid">
+
+      <div class="fu">
+        <span class="lbl">Our Purpose</span>
+        <h2 class="h2">Mission &amp; <span>Vision</span></h2>
+        <div class="rule"></div>
+        <p class="sub" style="margin-bottom:24px;">FUSELABX bridges the gap between theory and real-world application in electronics and embedded systems. Quality STEM education for everyone.</p>
+        <div class="val-list">
+          <div class="val">
+            <div class="v-ico">🎯</div>
+            <div><p class="v-title">Hands-On Learning</p><p class="v-txt">Every concept reinforced through practical projects and real hardware.</p></div>
+          </div>
+          <div class="val">
+            <div class="v-ico">🌐</div>
+            <div><p class="v-title">Open Access</p><p class="v-txt">Quality electronics education for students from all backgrounds.</p></div>
+          </div>
+          <div class="val">
+            <div class="v-ico">🤝</div>
+            <div><p class="v-title">Community Driven</p><p class="v-txt">A thriving community of makers who support each other's growth.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fu">
+        <span class="lbl">Our Story</span>
+        <h2 class="h2">How We <span>Started</span></h2>
+        <div class="rule"></div>
+        <!-- UPDATE: edit years and milestones -->
+        <div class="tl">
+          <div class="tl-item">
+            <p class="tl-yr">2026 — THE SPARK</p>
+            <p class="tl-txt"><strong>FUSELABX was born</strong> in a college lab when two engineering students hosted their first Arduino workshop for juniors.</p>
+          </div>
+        
+          
+        
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     TEAM
+     UPDATE: img src → images/team-NAME.jpg
+     data-vb keys match others/links.js
+     ======================================== -->
+<section id="team" class="sec">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">The People</span>
+      <h2 class="h2">Founders &amp; <span>Team</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Meet the passionate educators and makers behind fuselabx.</p>
+    </div>
+    <div class="g4 fu">
+
+      <!-- MEMBER 1 — UPDATE: img, name, role, bio -->
+      <div class="card team-card">
+        <div class="av-wrap">
+          <img src="images/team-alice1.jpeg" alt="Alice Mwangi"/>
+          <!-- swap above with: <img src="images/team-alice.jpeg" alt="Alice Mwangi"/> -->
+          <div class="av-ring" aria-hidden="true"></div>
+        </div>
+        <p class="t-name">SIDDIK</p>
+        <p class="t-role">Co-Founder &amp; CEO</p>
+        <p class="t-bio">3rd year ece student. Passionate about modern ai and elctronics.</p>
+        <div class="t-soc">
+          
+           
+        </div>
+      </div>
+
+      <!-- MEMBER 2 -->
+      <div class="card team-card">
+        <div class="av-wrap">
+          <img src="images/team-alice.jpeg" alt="Brian Otieno"/>
+          <div class="av-ring" aria-hidden="true"></div>
+        </div>
+        <p class="t-name">SAMIT</p>
+        <p class="t-role">Co-Founder &amp; CTO</p>
+        <p class="t-bio">3rd year student ece.good in event organising.</p>
+        <div class="t-soc"></a>
+        </div>
+      </div>
+
+      <!-- MEMBER 3 -->
+      <div class="card team-card">
+        <div class="av-wrap">
+          <img src="https://api.dicebear.com/7.x/personas/svg?seed=cynthia25" alt="Cynthia Wanjiku"/>
+          <div class="av-ring" aria-hidden="true"></div>
+        </div>
+        <p class="t-name">SREENATH V S</p>
+        <p class="t-role">Head of Education</p>
+        <p class="t-bio">. Designs fuselabx's inclusive, beginner-friendly curriculum and learning pathways.</p>
+        <div class="t-soc">
+            </div>
+      </div>
+
+      <!-- MEMBER 4 -->
+      <div class="card team-card">
+        <div class="av-wrap">
+          <img src="https://api.dicebear.com/7.x/personas/svg?seed=david25" alt="David Kamau"/>
+          <div class="av-ring" aria-hidden="true"></div>
+        </div>
+        <p class="t-name">VARUN</p>
+        <p class="t-role">Operations Manager</p>
+        <p class="t-bio">Coordinates events, partnerships, and logistics. The backbone of fuselabx's day-to-day operations and community engagement.</p>
+        <div class="t-soc">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     COURSES — UPDATE content below
+     ======================================== -->
+<section id="courses" class="sec sec-alt">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">What We Teach</span>
+      <h2 class="h2">Our <span>Courses</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Structured, project-based courses from beginner to advanced level.</p>
+    </div>
+    <div class="g3 fu">
+
+  <!-- ARDUINO FUNDAMENTALS -->
+  <div class="card co-card">
+    <div class="co-em">🔌</div>
+    <h3 class="co-title">Arduino Fundamentals</h3>
+    <div class="co-meta">
+      <span class="badge b-grn">Beginner</span>
+      <span class="tag">⏱ 2 Days</span>
+      <span class="tag">📡 Embedded</span>
+    </div>
+    <p class="co-desc">Start your journey. Learn microcontroller basics, digital/analog I/O, sensors, and build your first automation projects with Arduino Uno.</p>
+    <div class="co-foot">
+      <div class="i-chip">
+        <img src="images/team-alice.jpg" alt="Instructor"/>
+        <span>Alice M.</span>
+      </div>
+      <a href="#" data-vb="course_arduino" target="_blank" rel="noopener" class="btn btn-y" style="padding:7px 15px;font-size:.78rem;">Enroll</a>
+    </div>
+  </div>
+
+  <!-- IOT WITH ARDUINO & ESP32 -->
+  <div class="card co-card">
+    <div class="co-em">🌐</div>
+    <h3 class="co-title">IoT with Arduino &amp; ESP32</h3>
+    <div class="co-meta">
+      <span class="badge b-yel">Intermediate</span>
+      <span class="tag">⏱ 4 Days</span>
+      <span class="tag">📶 IoT</span>
+    </div>
+    <p class="co-desc">Connect devices to the internet. Build IoT dashboards, work with MQTT, Wi-Fi, REST APIs, and cloud platforms using ESP32.</p>
+    <div class="co-foot">
+      <div class="i-chip">
+        <img src="images/team-brian.jpg" alt="Instructor"/>
+        <span>Brian O.</span>
+      </div>
+      <a href="#" data-vb="course_iot" target="_blank" rel="noopener" class="btn btn-y" style="padding:7px 15px;font-size:.78rem;">Enroll</a>
+    </div>
+  </div>
+
+  
+  </div>
+
+  <!-- PCB DESIGN & PROTOTYPING -->
+  <div class="card co-card">
+    <div class="co-em">💡</div>
+    <h3 class="co-title">PCB Design &amp; Prototyping</h3>
+    <div class="co-meta">
+      <span class="badge b-red">Advanced</span>
+      <span class="tag">⏱ 8 Days</span>
+      <span class="tag">🖥 EDA</span>
+    </div>
+    <p class="co-desc">Design professional PCBs using KiCad. From schematic to Gerber exports and real fabrication — build custom hardware.</p>
+    <div class="co-foot">
+      <div class="i-chip">
+        <img src="images/team-alice.jpg" alt="Instructor"/>
+        <span>Alice M.</span>
+      </div>
+      <a href="#" data-vb="course_pcb" target="_blank" rel="noopener" class="btn btn-y" style="padding:7px 15px;font-size:.78rem;">Enroll</a>
+    </div>
+  </div>
+
+  <!-- SENSOR INTEGRATION -->
+  <div class="card co-card">
+    <div class="co-em">📟</div>
+    <h3 class="co-title">Sensor Integration</h3>
+    <div class="co-meta">
+      <span class="badge b-yel">Intermediate</span>
+      <span class="tag">⏱ 10 Days</span>
+      <span class="tag">🔬 Sensors</span>
+    </div>
+    <p class="co-desc">Deep-dive into I²C, SPI, UART. Work with temperature, humidity, motion, gas, and proximity sensors in real projects.</p>
+    <div class="co-foot">
+      <div class="i-chip">
+        <img src="images/team-brian.jpg" alt="Instructor"/>
+        <span>Brian O.</span>
+      </div>
+      <a href="#" data-vb="course_sensor" target="_blank" rel="noopener" class="btn btn-y" style="padding:7px 15px;font-size:.78rem;">Enroll</a>
+    </div>
+  </div>
+
+ 
+  </div>
+
+</div>
+  </div>
+</section>
+
+<!-- ========================================
+     INSTRUCTORS
+     UPDATE: img src, name, title, bio, skill tags
+     ======================================== -->
+<section id="instructors" class="sec">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">Who Teaches</span>
+      <h2 class="h2">Our <span>Instructors</span></h2>
+      <div class="rule"></div>
+      <p class="sub">STUDENTS WHO HAVE DONE REAL TIME PROJECTS</p>
+    </div>
+    <div class="g3 fu">
+      <div class="card ins-card"><img class="ph" src="https://api.dicebear.com/7.x/personas/svg?seed=cynthia25" alt="Cynthia Wanjiku"/><p class="i-name">SREENATH</p><p class="i-ttl">Arduino &amp; Electronics</p><p class="i-bio">5+ years teaching electronics. Certified Arduino educator and maker-space organiser. Students have won national robotics competitions.</p><div class="s-chips"><span class="tag">Arduino</span><span class="tag">Sensors</span><span class="tag">Robotics</span><span class="tag">C/C++</span></div><div style="display:flex;gap:7px;justify-content:center"><a href="#" data-vb="cynthia_gh" target="_blank" class="ibtn" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84a9.6 9.6 0 012.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg></a><a href="#" data-vb="cynthia_wa" target="_blank" class="ibtn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.16c-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.43z"/></svg></a></div></div>
+      <div class="card ins-card"><img class="ph" src="https://api.dicebear.com/7.x/personas/svg?seed=brian25" alt="Brian Otieno"/><p class="i-name">VISNU VARDHAN</p><p class="i-ttl">IoT &amp; Embedded Systems</p><p class="i-bio">Embedded systems engineer with IoT, MQTT, and cloud dashboard experience. Makes complex protocols approachable and fun.</p><div class="s-chips"><span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">Python</span><span class="tag">AWS IoT</span></div><div style="display:flex;gap:7px;justify-content:center"><a href="#" data-vb="brian_gh" target="_blank" class="ibtn" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84a9.6 9.6 0 012.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg></a><a href="#" data-vb="brian_wa" target="_blank" class="ibtn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.16c-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.43z"/></svg></a></div></div>
+      <div class="card ins-card"><img class="ph" src="https://api.dicebear.com/7.x/personas/svg?seed=alice25" alt="Alice Mwangi"/><p class="i-name">SAMIT</p><p class="i-ttl">PCB Design &amp; Robotics</p><p class="i-bio">Hardware engineer and PCB designer. Teaches from breadboard to final PCB product, with real-world deployment focus.</p><div class="s-chips"><span class="tag">KiCad</span><span class="tag">Robotics</span><span class="tag">PID</span><span class="tag">Motors</span></div><div style="display:flex;gap:7px;justify-content:center"><a href="#" data-vb="alice_gh" target="_blank" class="ibtn" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84a9.6 9.6 0 012.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg></a><a href="#" data-vb="alice_wa" target="_blank" class="ibtn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.16c-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.43z"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     STUDY MATERIALS
+     UPDATE: data-vb download keys in links.js
+             YouTube VIDEO_ID_1 / VIDEO_ID_2
+     ======================================== -->
+<section id="materials" class="sec sec-alt">
+  <div class="wrap">
+    <div class="fu">
+      <span class="lbl">Resources</span>
+      <h2 class="h2">Study <span>Materials</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Download guides &amp; starter code, and watch tutorials — all free for enrolled students.</p>
+    </div>
+    <div class="mat-grid fu">
+      <div>
+        <p class="sh sh-g">📥 DOWNLOADABLE RESOURCES</p>
+        <div class="dl-list">
+          <a class="dl-item" href="#" data-vb="dl_handbook" download><div class="dl-ico">📄</div><div><p class="dl-n">Arduino Fundamentals Handbook</p><p class="dl-m">PDF · 42 pages · v2.1</p></div><span class="dl-b">⬇ PDF</span></a>
+          <a class="dl-item" href="#" data-vb="dl_code"     download><div class="dl-ico">💾</div><div><p class="dl-n">Starter Code Library (Arduino)</p><p class="dl-m">ZIP · 18 sketch files</p></div><span class="dl-b">⬇ ZIP</span></a>
+          <a class="dl-item" href="#" data-vb="dl_iot"      download><div class="dl-ico">📊</div><div><p class="dl-n">IoT Project Templates (ESP32)</p><p class="dl-m">ZIP · Node-RED + MQTT examples</p></div><span class="dl-b">⬇ ZIP</span></a>
+          <a class="dl-item" href="#" data-vb="dl_pcb"      download><div class="dl-ico">📐</div><div><p class="dl-n">PCB Design Cheat Sheet</p><p class="dl-m">PDF · KiCad quick reference</p></div><span class="dl-b">⬇ PDF</span></a>
+          <a class="dl-item" href="#" data-vb="dl_sensors"  download><div class="dl-ico">🔬</div><div><p class="dl-n">Sensor Datasheets Collection</p><p class="dl-m">ZIP · 25 common sensors</p></div><span class="dl-b">⬇ ZIP</span></a>
+        </div>
+      </div>
+      <div>
+        <p class="sh sh-b">🎬 TUTORIAL VIDEOS</p>
+        <div class="vid-list">
+          <!-- UPDATE: replace VIDEO_ID_1 with real YouTube video ID -->
+          <div><p class="vid-t">Getting Started with Arduino Uno</p><div class="vid-box"><iframe src="https://youtu.be/JnJIKX5J0Cc?si=Fv-ykg64pJO6FX1g" title="Arduino tutorial" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
+          <!-- UPDATE: replace VIDEO_ID_2 with real YouTube video ID -->
+          <div><p class="vid-t">Building Your First IoT Sensor Dashboard</p><div class="vid-box"><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="IoT tutorial" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     EVENTS
+     UPDATE: dates, titles, descriptions
+             data-vb keys → Google Sheets form URLs in links.js
+     ======================================== -->
+<section id="events" class="sec">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">Join Us</span>
+      <h2 class="h2">Upcoming <span>Events</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Workshops, hackathons, and seminars. Register instantly via Google Sheets — no account needed.</p>
+    </div>
+    
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     COMPLETED PROJECTS
+     UPDATE: img src → images/project-NAME.jpg
+             data-vb keys → GitHub URLs in links.js
+     ======================================== -->
+<section id="projects" class="sec sec-alt">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">What We've Built</span>
+      <h2 class="h2">Completed <span>Projects</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Real projects designed, built, and shipped by FUSELABX students and teams.</p>
+    </div>
+    <div class="g3 fu">
+      <div class="card pr-card"><img class="pr-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Smart irrigation"/><div class="pr-body"><div class="pr-tags"><span class="tag">Arduino</span><span class="tag">IoT</span><span class="tag">Sensors</span></div><p class="pr-title">Smart Irrigation System</p><p class="pr-desc">Automated plant watering using soil moisture sensors and ESP32. Sends WhatsApp alerts and logs to Google Sheets.</p><div class="pr-links"><a href="#" data-vb="gh_irrigation" target="_blank" rel="noopener" class="btn btn-gh" style="font-size:.78rem;padding:7px 14px;">⚙ GitHub</a></div></div></div>
+      <div class="card pr-card"><img class="pr-img" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Line follower robot"/><div class="pr-body"><div class="pr-tags"><span class="tag">Robotics</span><span class="tag">PID</span><span class="tag">Motors</span></div><p class="pr-title">Autonomous Line-Follower Bot</p><p class="pr-desc">PID-controlled robot that follows a white line at high speed. Won 1st place at the 2023 inter-college robotics competition.</p><div class="pr-links"><a href="#" data-vb="gh_robot" target="_blank" rel="noopener" class="btn btn-gh" style="font-size:.78rem;padding:7px 14px;">⚙ GitHub</a></div></div></div>
+      <div class="card pr-card"><img class="pr-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Air quality monitor"/><div class="pr-body"><div class="pr-tags"><span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">Dashboard</span></div><p class="pr-title">Air Quality Monitor</p><p class="pr-desc">Real-time indoor air quality with PM2.5, CO₂, and temperature sensors. Live Node-RED dashboard with Telegram alerts.</p><div class="pr-links"><a href="#" data-vb="gh_air" target="_blank" rel="noopener" class="btn btn-gh" style="font-size:.78rem;padding:7px 14px;">⚙ GitHub</a></div></div></div>
+      <div class="card pr-card"><img class="pr-img" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" alt="Gesture robot"/><div class="pr-body"><div class="pr-tags"><span class="tag">MPU6050</span><span class="tag">Bluetooth</span><span class="tag">Arduino</span></div><p class="pr-title">Gesture-Controlled Robot</p><p class="pr-desc">Control a 4WD robot with hand gestures via MPU6050 accelerometer glove over Bluetooth. Built in the robotics course.</p><div class="pr-links"><a href="#" data-vb="gh_gesture" target="_blank" rel="noopener" class="btn btn-gh" style="font-size:.78rem;padding:7px 14px;">⚙ GitHub</a></div></div></div>
+      <div class="card pr-card"><img class="pr-img" src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80" alt="Smart home"/><div class="pr-body"><div class="pr-tags"><span class="tag">Home Auto</span><span class="tag">Relay</span><span class="tag">App</span></div><p class="pr-title">Smart Home Controller</p><p class="pr-desc">Voice + app-controlled home automation. Switch lights, fans, and appliances remotely via custom Android app on ESP8266.</p><div class="pr-links"><a href="#" data-vb="gh_home" target="_blank" rel="noopener" class="btn btn-gh" style="font-size:.78rem;padding:7px 14px;">⚙ GitHub</a></div></div></div>
+      <div class="card pr-card"><img class="pr-img" src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80" alt="VoltBloom shield PCB"/><div class="pr-body"><div class="pr-tags"><span class="tag">PCB</span><span class="tag">KiCad</span><span class="tag">Hardware</span></div><p class="pr-title">Custom VoltBloom Shield</p><p class="pr-desc">Student-designed Arduino shield with sensor headers, OLED connector, and LoRa integration. Now bundled in all VoltBloom kits.</p><div class="pr-links"><a href="#" data-vb="gh_shield" target="_blank" rel="noopener" class="btn btn-gh" style="font-size:.78rem;padding:7px 14px;">⚙ GitHub</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PHOTO GALLERY
+     UPDATE: replace img src with images/gallery-NN.jpg
+     ======================================== -->
+<section id="gallery" class="sec">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">Moments</span>
+      <h2 class="h2">Photo <span>Gallery</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Snapshots from our workshops, hackathons, and community events.</p>
+    </div>
+    <div class="gal fu" id="gal">
+      <!-- UPDATE: src="images/gallery-01.jpg" etc. -->
+      <div class="gi" tabindex="0" aria-label="Workshop photo"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=550&q=75" alt="Workshop in progress" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+      <div class="gi" tabindex="0" aria-label="Hackathon photo"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=550&q=75" alt="Hackathon event" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+      <div class="gi" tabindex="0" aria-label="Arduino workshop"><img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=550&q=75" alt="Arduino workshop" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+      <div class="gi" tabindex="0" aria-label="Robotics session"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=550&q=75" alt="Robotics session" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+      <div class="gi" tabindex="0" aria-label="PCB design"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=550&q=75" alt="PCB design session" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+      <div class="gi" tabindex="0" aria-label="Project showcase"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=550&q=75" alt="Project showcase" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+      <div class="gi" tabindex="0" aria-label="Team photo"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=550&q=75" alt="Team group photo" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+      <div class="gi" tabindex="0" aria-label="Graduation ceremony"><img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=550&q=75" alt="Graduation ceremony" loading="lazy"/><div class="gi-ov" aria-hidden="true">🔍</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lb" role="dialog" aria-label="Photo lightbox" aria-modal="true">
+  <button id="lb-x" aria-label="Close lightbox">✕</button>
+  <img id="lb-img" src="" alt="Enlarged photo"/>
+</div>
+
+<!-- ========================================
+     NEWS & ANNOUNCEMENTS — UPDATE below
+     ======================================== -->
+<section id="news" class="sec sec-alt">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">Stay Updated</span>
+      <h2 class="h2">News &amp; <span>Announcements</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Latest from fuselabx — new courses, partnerships, and milestones.</p>
+    </div>
+    <div class="g3 fu">
+      <div class="card news-card"><div class="nd"><div class="dy">15</div><div class="mo">Mar 2025</div></div><div class="nv"></div><div><p class="n-type">🏆 ACHIEVEMENT</p><p class="n-title">VoltBloom Reaches  Students!</p><p class="n-txt">We've officially  enrolled students. Thank you to every learner, instructor, and supporter who made this possible.</p><a href="#" class="btn btn-gh" style="padding:5px 13px;font-size:.78rem;">Read More →</a></div></div>
+      <div class="card news-card"><div class="nd"><div class="dy">01</div><div class="mo">Feb 2025</div></div><div class="nv"></div><div><p class="n-type">🚀 NEW COURSE</p><p class="n-title">PCB Design Course Now Live</p><p class="n-txt">Our PCB Design &amp; Prototyping course using KiCad is now open for enrollment. Limited seats — apply before March 1st.</p><a href="#courses" class="btn btn-gh" style="padding:5px 13px;font-size:.78rem;">View Course →</a></div></div>
+      <div class="card news-card"><div class="nd"><div class="dy">10</div><div class="mo">Jan 2025</div></div><div class="nv"></div><div><p class="n-type">🤝 PARTNERSHIP</p><p class="n-title">Partnership with TechHub Nairobi</p><p class="n-txt">VoltBloom and TechHub Nairobi join forces — physical lab access to all enrolled students, equipment included, free of charge.</p><a href="#" class="btn btn-gh" style="padding:5px 13px;font-size:.78rem;">Read More →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     TESTIMONIALS — UPDATE quotes/names/courses
+     ======================================== -->
+<section id="testimonials" class="sec">
+  <div class="wrap">
+    <div class="tc fu">
+      <span class="lbl">Student Stories</span>
+      <h2 class="h2">What Our <span>Students</span> Say</h2>
+      <div class="rule"></div>
+      <p class="sub">Real outcomes from real learners who transformed their skills with FUSELABX.</p>
+    </div>
+    <div class="g3 fu">
+      <div class="card"><div class="q" aria-hidden="true">"</div><p class="q-txt">fuselabx's Arduino course took me from zero to building a fully functional smart irrigation system in 6 weeks. The hands-on approach makes everything click in a way textbooks never could.</p><div class="q-auth"><img src="https://api.dicebear.com/7.x/personas/svg?seed=st01" alt="Samuel"/><div><p class="q-name">Samuel Njoroge</p><p class="q-co">Arduino Fundamentals — Cohort 3</p></div></div></div>
+      <div class="card"><div class="q" aria-hidden="true">"</div><p class="q-txt">I joined with zero programming background. Within 8 weeks I had a real-time IoT sensor dashboard running. The instructors are incredibly patient and deeply knowledgeable.</p><div class="q-auth"><img src="https://api.dicebear.com/7.x/personas/svg?seed=st02" alt="Amina"/><div><p class="q-name">Amina Hassan</p><p class="q-co">IoT with ESP32 — Cohort 2</p></div></div></div>
+      <div class="card"><div class="q" aria-hidden="true">"</div><p class="q-txt">After the Robotics course our team entered the national competition and won first place. VoltBloom doesn't just teach — they inspire you to push boundaries and build things that matter.</p><div class="q-auth"><img src="https://api.dicebear.com/7.x/personas/svg?seed=st03" alt="James"/><div><p class="q-name">James Kariuki</p><p class="q-co">Robotics &amp; Automation — Cohort 1</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CONTACT
+     All contact info auto-filled from links.js
+     ======================================== -->
+<section id="contact" class="sec sec-alt">
+  <div class="wrap">
+    <div class="fu">
+      <span class="lbl">Get In Touch</span>
+      <h2 class="h2">Contact <span>Us</span></h2>
+      <div class="rule"></div>
+      <p class="sub">Questions about courses, events, or partnerships? We'd love to hear from you.</p>
+    </div>
+    <div class="ct-grid fu">
+      <div>
+        <div class="ci"><div class="ci-ico">📧</div><div><p class="ci-l">Email</p><p class="ci-v"><a href="#" data-vbmail="email"></a></p></div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div><p class="ci-l">Location</p><p class="ci-v" data-vbtxt="location"></p></div></div>
+        <div class="ci"><div class="ci-ico">🕐</div><div><p class="ci-l">Office Hours</p><p class="ci-v" data-vbtxt="hours"></p></div></div>
+        <div class="soc-pills">
+          <a href="#" data-vb="whatsapp" target="_blank" rel="noopener" class="soc-pill wa">
+            <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.16c-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.43z"/></svg>
+            WhatsApp Chat
+          </a>
+          <a href="#" data-vb="github" target="_blank" rel="noopener" class="soc-pill gh">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84a9.6 9.6 0 012.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <form id="cf" novalidate aria-label="Contact form">
+        <div class="frow">
+          <div class="fg"><label class="fl" for="f-name">First Name *</label><input id="f-name" name="name" type="text" class="ff" placeholder="Alice" required autocomplete="given-name"/></div>
+          <div class="fg"><label class="fl" for="f-lname">Last Name</label><input id="f-lname" name="lname" type="text" class="ff" placeholder="Mwangi" autocomplete="family-name"/></div>
+        </div>
+        <div class="fg"><label class="fl" for="f-email">Email Address *</label><input id="f-email" name="email" type="email" class="ff" placeholder="you@example.com" required autocomplete="email"/></div>
+        <div class="fg"><label class="fl" for="f-subj">Topic</label><select id="f-subj" name="subject" class="ff"><option value="">Select a topic…</option><option>Course Inquiry</option><option>Event / Workshop</option><option>Partnership</option><option>Other</option></select></div>
+        <div class="fg"><label class="fl" for="f-msg">Message *</label><textarea id="f-msg" name="message" class="ff" placeholder="Tell us how we can help…" required></textarea></div>
+        <button type="submit" class="btn btn-g" style="width:100%;justify-content:center;font-size:.94rem;padding:13px;">✉ Send Message</button>
+        <div id="f-ok" class="f-ok" role="alert">✅ Thanks! We'll get back to you within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     FOOTER
+     ======================================== -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="logo"><span class="LABX">⚡</span><span><span class="FUSE">VOLT</span><span class="LABX">LABX</span></span></div>
+        <p>Empowering the next generation of makers and engineers through hands-on Arduino and electronics education.</p>
+        <div class="ft-soc">
+          <a href="#" data-vb="github"    target="_blank" rel="noopener" class="ibtn" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.18 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84a9.6 9.6 0 012.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg></a>
+          <a href="#" data-vb="whatsapp"  target="_blank" rel="noopener" class="ibtn" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.16c-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.43z"/></svg></a>
+          <a href="#" data-vb="youtube"   target="_blank" rel="noopener" class="ibtn" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 00.5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 002.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 002.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>
+          <a href="#" data-vb="twitter"   target="_blank" rel="noopener" class="ibtn" aria-label="Twitter/X"><svg viewBox="0 0 24 24"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24H16.17l-5.21-6.82L4.99 21.75H1.68l7.73-8.84L1.25 2.25H8.08l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>Learn</h4><ul><li><a href="#courses">All Courses</a></li><li><a href="#instructors">Instructors</a></li><li><a href="#materials">Study Materials</a></li><li><a href="#events">Events</a></li></ul></div>
+      <div class="ft-col"><h4>About</h4><ul><li><a href="#mission">Our Mission</a></li><li><a href="#team">Team</a></li><li><a href="#projects">Projects</a></li><li><a href="#news">News</a></li></ul></div>
+      <div class="ft-col"><h4>Connect</h4><ul><li><a href="#contact">Contact Us</a></li><li><a href="#" data-vb="github" target="_blank">GitHub</a></li><li><a href="#" data-vb="whatsapp" target="_blank">WhatsApp</a></li><li><a href="#gallery">Gallery</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 fuselabx. All rights reserved.</span>
+      <span>Built with ⚡ for the maker community</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==========================================
+     SCRIPTS — loaded at END of body (no defer needed)
+     links.js must come BEFORE script.js
+     ========================================== -->
+<script src="others/links.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
